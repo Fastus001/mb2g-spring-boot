@@ -18,6 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
+        <some.custom.prop>foo bar</some.custom.prop>
     </properties>
 
     <dependencies>
@@ -49,6 +50,18 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>
+                    <execution>
+                        <id>build-info-goal</id>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                        <configuration>
+                            <additionalProperties>
+                                <java.version>${java.version}</java.version>
+                                <some.custom.prop>${some.custom.prop}</some.custom.prop>
+                            </additionalProperties>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>pre-it</id>
                         <goals>
